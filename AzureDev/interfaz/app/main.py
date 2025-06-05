@@ -1,8 +1,12 @@
 import streamlit as st
 from time import sleep
 
-st.set_page_config(page_title="TCA ClientProfiler", page_icon=":busts_in_silhouette:", layout="wide")
-
+#st.set_page_config(page_title="TCA ClientProfiler", page_icon=":busts_in_silhouette:", layout="wide")
+st.set_page_config(
+    page_title='GDP dashboard',
+    page_icon=":busts_in_silhouette:", # This is an emoji shortcode. Could be a URL too.
+    layout="wide"
+)
 # Login setup
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
