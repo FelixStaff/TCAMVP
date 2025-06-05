@@ -27,7 +27,7 @@ if not st.session_state.logged_in:
         submit = st.form_submit_button("Iniciar sesión")
 
     if submit:
-        if (username == "admin" and password == "admin") or (username == "user" and password == "user"):
+        if (username == "user" and password == "user"):
             st.session_state.logged_in = True
             st.session_state.username = username
             placeholder.empty()
