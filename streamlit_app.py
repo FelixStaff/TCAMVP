@@ -41,7 +41,7 @@ if not st.session_state.logged_in:
 pages = {
     "Navegación": [
         st.Page("interfaz/app/inicio.py", title="Inicio"),
-        st.Page("interfaz/app/dashboard.py", title="Visualizaciones"),
+        #st.Page("interfaz/app/dashboard.py", title="Visualizaciones"),
         st.Page("interfaz/app/admin.py", title="Modificar datos"),
     ]
 }

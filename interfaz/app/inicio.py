@@ -96,9 +96,7 @@ with st.spinner('Updating report...'):
         t1.markdown("<h1 style='text-align: center;'>TCA ClientProfiler</h1>", unsafe_allow_html=True)
         #t1.title("TCA ClientProfiler")
         t1.markdown("Descubre los perfiles de tus clientes y optimiza tus estrategias de negocio con decisiones informadas: analiza comportamientos, identifica tendencias y maximiza tus ingresos.")
-
-        
-
+        t2.empty()
         
         g1,g2,g3 = st.columns([0.7, 0.7, 0.5])
 
