@@ -97,18 +97,7 @@ with st.spinner('Updating report...'):
         #t1.title("TCA ClientProfiler")
         t1.markdown("Descubre los perfiles de tus clientes y optimiza tus estrategias de negocio con decisiones informadas: analiza comportamientos, identifica tendencias y maximiza tus ingresos.")
 
-        if st.session_state.username == 'admin':
-            if t2.button("Modificar datos"):
-                st.switch_page("admin.py")
-                st.rerun()
         
-        if t2.button("Más visualizaciones"):
-            st.switch_page("dashboard.py")
-            st.rerun()
-        
-        if t2.button("Clasificar reservación"):
-            go_to_page("clasificar")
-            st.rerun()
 
         
         g1,g2,g3 = st.columns([0.7, 0.7, 0.5])
