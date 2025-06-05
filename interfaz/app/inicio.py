@@ -68,7 +68,7 @@ def basic_layout(profile):
         m3.plotly_chart(plot_bar_chart(filtered_df, profile, 'revenue'), use_container_width=True)
 
     with b2.expander("Estrategias de marketing", expanded=False):
-        st.write("Pregúntale a alguien de merca bro")
+        st.write("TBD")
 
 random.seed(42)  # For reproducibility
 
