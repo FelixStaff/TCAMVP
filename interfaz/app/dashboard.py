@@ -23,7 +23,10 @@ st.sidebar.header("Opciones de visualización")
 
 # Selección de variables numéricas y categóricas
 num_vars = data.select_dtypes(include=['number']).columns.tolist()
+num_vars = [var for var in num_vars if var != 'RegId' and var != 'cluster']
+
 cat_vars = data.select_dtypes(include=['object', 'category']).columns.tolist()
+cat_vars = [var for var in cat_vars if var != 'GraphDate']
 
 x_var = st.sidebar.selectbox("Variable en el eje X", options=num_vars + cat_vars, index=0)
 y_var = st.sidebar.selectbox("Variable en el eje Y", options=[None] + num_vars, index=0)
@@ -31,6 +34,11 @@ graph_type = st.sidebar.selectbox("Tipo de gráfico", options=["Histograma", "Ba
 
 # Filtros interactivos para variables categóricas
 st.sidebar.header("Filtros")
+
+# Botón para resetear filtros
+if st.sidebar.button("🔄 Resetear valores"):
+    st.experimental_rerun()
+
 filters = {}
 for col in cat_vars:
     unique_vals = data[col].dropna().unique().tolist()
@@ -38,10 +46,30 @@ for col in cat_vars:
         selected = st.sidebar.multiselect(f"Filtrar {col}", unique_vals, default=unique_vals)
         filters[col] = selected
 
+# Sliders para variables numéricas
+num_filters = {}
+for col in num_vars:
+    min_val = float(data[col].min())
+    max_val = float(data[col].max())
+    step = (max_val - min_val) / 100 if max_val > min_val else 1
+    selected_range = st.sidebar.slider(
+        f"Filtrar {col}",
+        min_value=min_val,
+        max_value=max_val,
+        value=(min_val, max_val),
+        step=step,
+        format="%.2f"
+    )
+    num_filters[col] = selected_range
+
 # Aplicar filtros
 filtered_data = data.copy()
+filtered_data = filtered_data.drop(columns=['RegId', 'GraphDate','cluster'], errors='ignore')
+
 for col, vals in filters.items():
     filtered_data = filtered_data[filtered_data[col].isin(vals)]
+for col, (min_v, max_v) in num_filters.items():
+    filtered_data = filtered_data[(filtered_data[col] >= min_v) & (filtered_data[col] <= max_v)]
 
 # Mostrar gráfico según selección
 st.subheader(f"Visualización: {graph_type}")
@@ -60,4 +88,5 @@ elif graph_type == "Boxplot":
     else:
         st.info("Selecciona una variable para el eje Y.")
 
-st.dataframe(filtered_data.head(100))
+st.subheader("Datos Filtrados (muestra de 100):")
+st.dataframe(filtered_data.head(100), use_container_width=True, hide_index=True)
