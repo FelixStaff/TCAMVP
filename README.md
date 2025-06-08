@@ -1,18 +1,18 @@
-# :earth_americas: GDP dashboard template
+# 👥: TCA Client Profiler
 
-A simple Streamlit app showing the GDP of different countries in the world.
+Descubre los perfiles de tus clientes y optimiza tus estrategias de negocio con decisiones informadas: analiza comportamientos, identifica tendencias y maximiza tus ingresos.
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gdp-dashboard-template.streamlit.app/)
 
-### How to run it on your own machine
+### Cómo ejecutar localmente
 
-1. Install the requirements
+1. Instalar los requerimientos
 
    ```
    $ pip install -r requirements.txt
    ```
 
-2. Run the app
+2. Ejecutar la aplicación
 
    ```
    $ streamlit run streamlit_app.py
