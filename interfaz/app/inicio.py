@@ -4,7 +4,7 @@ import numpy as np
 import random
 import plotly.express as px
 import plotly.graph_objects as go
-from functions import go_to_page, plot_bar_chart, average_rate, average_los, kpi_reservations, kpi_revenue
+from interfaz.app.functions import go_to_page, plot_bar_chart, average_rate, average_los, kpi_reservations, kpi_revenue
 
 # CSS styling
 with open("interfaz/app/style.css") as f:

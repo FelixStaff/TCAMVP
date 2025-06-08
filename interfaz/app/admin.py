@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import random
 import plotly.graph_objects as go
-from functions import average_rate, average_los, kpi_reservations, kpi_revenue
-import clasificador
+from interfaz.app.functions import average_rate, average_los, kpi_reservations, kpi_revenue
+import interfaz.app.clasificador as clasificador
 
 random.seed(42)  # For reproducibility
 
