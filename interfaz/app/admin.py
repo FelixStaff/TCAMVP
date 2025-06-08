@@ -67,8 +67,7 @@ if new_data is not None:
         pie = go.Figure(data=[go.Pie(
             labels=profile_counts.index,
             values=profile_counts.values,
-            marker={'colors':{'A': '#b47e58', 'B': '#ca3e49', 'C': '#2f3650'}},
-            textinfo='label+percent')])
+            marker={'colors' : [{'A': '#b47e58', 'B': '#ca3e49', 'C': '#2f3650'}[label] for label in profile_counts.index]})])
         pie.update_layout(title_text='Distribución de Perfiles de Clientes')
         st.plotly_chart(pie, use_container_width=True)
 
