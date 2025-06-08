@@ -12,7 +12,7 @@ data['GraphDate'] = pd.to_datetime(data['GraphDate']).dt.to_period('M')
 b1, b2 = st.columns([0.9, 0.1])
 b1.empty()
 if b2.button("⬅ Volver"):
-    st.switch_page("inicio.py")
+    st.switch_page("interfaz/app/inicio.py")
 
 # Create a unique identifier for each reservation
 data['RegId'] = random.sample(range(100000, 999999), len(data))

@@ -21,7 +21,7 @@ st.session_state.month = data['GraphDate'].max()
 b1, b2 = st.columns([0.9, 0.07])
 b1.empty()
 if b2.button("⬅ Volver"):
-    st.switch_page("inicio.py")
+    st.switch_page("interfaz/app/inicio.py")
 
 ## Upload new clients
 t1,t2 = st.columns([0.4, 0.9])

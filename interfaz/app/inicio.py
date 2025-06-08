@@ -120,11 +120,11 @@ with st.spinner('Updating report...'):
             with t2.container(border=False):
                 b1,b2 = st.columns([0.5, 0.5])
                 if b1.button(":outbox_tray: Modificar datos"):
-                    st.switch_page("admin.py")
+                    st.switch_page("interfaz/app/admin.py")
                     st.rerun()
 
                 if b2.button(":bar_chart: Visualizaciones", key="viz_admin"):
-                    st.switch_page("dashboard.py")
+                    st.switch_page("interfaz/app/dashboard.py")
                     st.rerun()
                 
                 if t2.button("Salir del sistema", use_container_width=True):
@@ -134,7 +134,7 @@ with st.spinner('Updating report...'):
                     st.rerun()
         else:
             if t2.button(":bar_chart: Visualizaciones", key="viz_user", use_container_width=True):
-                st.switch_page("dashboard.py")
+                st.switch_page("interfaz/app/dashboard.py")
                 st.rerun()
 
             if t2.button("Salir del sistema", use_container_width=True):
