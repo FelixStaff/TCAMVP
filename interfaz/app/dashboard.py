@@ -37,7 +37,7 @@ st.sidebar.header("Filtros")
 
 # Botón para resetear filtros
 if st.sidebar.button("🔄 Resetear valores"):
-    st.experimental_rerun()
+    st.rerun()
 
 filters = {}
 for col in cat_vars:
