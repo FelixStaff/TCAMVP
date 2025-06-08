@@ -1,12 +1,8 @@
 import streamlit as st
 from time import sleep
 
-#st.set_page_config(page_title="TCA ClientProfiler", page_icon=":busts_in_silhouette:", layout="wide")
-st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=":busts_in_silhouette:", # This is an emoji shortcode. Could be a URL too.
-    layout="wide"
-)
+st.set_page_config(page_title="TCA ClientProfiler", page_icon=":busts_in_silhouette:", layout="wide")
+
 # Login setup
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
@@ -19,7 +15,7 @@ if not st.session_state.logged_in:
 
     with placeholder.form("login"):
         # Restrict the width of the header image
-        st.image("interfaz/images/tca_header.jpeg")
+        st.image("interfaz/images/tca_header.jpeg", use_container_width=True)
         st.markdown("<h1 style='text-align: center;'>TCA ClientProfiler</h1>", unsafe_allow_html=True)
         st.markdown("### Iniciar sesión")
         username = st.text_input("Usuario", placeholder="Ingresa tu usuario")
@@ -27,7 +23,7 @@ if not st.session_state.logged_in:
         submit = st.form_submit_button("Iniciar sesión")
 
     if submit:
-        if (username == "user" and password == "user"):
+        if (username == "admin" and password == "admin") or (username == "user" and password == "user"):
             st.session_state.logged_in = True
             st.session_state.username = username
             placeholder.empty()
@@ -40,9 +36,9 @@ if not st.session_state.logged_in:
 
 pages = {
     "Navegación": [
-        st.Page("interfaz/app/inicio.py", title="Inicio"),
-        #st.Page("interfaz/app/dashboard.py", title="Visualizaciones"),
-        st.Page("interfaz/app/admin.py", title="Modificar datos"),
+        st.Page("inicio.py", title="Inicio"),
+        st.Page("dashboard.py", title="Visualizaciones"),
+        st.Page("admin.py", title="Modificar datos"),
     ]
 }
 
