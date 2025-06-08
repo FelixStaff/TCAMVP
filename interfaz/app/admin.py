@@ -64,7 +64,11 @@ if new_data is not None:
     # Pie chart for profile distribution
     with c1.container():
         profile_counts = data['Profile'].value_counts()
-        pie = go.Figure(data=[go.Pie(labels=profile_counts.index, values=profile_counts.values)])
+        pie = go.Figure(data=[go.Pie(
+            labels=profile_counts.index,
+            values=profile_counts.values,
+            marker={'colors':{'A': '#b47e58', 'B': '#ca3e49', 'C': '#2f3650'}},
+            textinfo='label+percent')])
         pie.update_layout(title_text='Distribución de Perfiles de Clientes')
         st.plotly_chart(pie, use_container_width=True)
 
@@ -79,9 +83,9 @@ if new_data is not None:
 
         adr_actual, adr_anterior = average_rate(new_data, 'all')
         k1.metric(
-                label="Tarifa promedio por reservación (ADR)", 
-                value=f'{adr_actual:.2f} USD',
-                delta = f"{adr_actual - adr_anterior:.2f} USD respecto al mes anterior")
+            label="Tarifa promedio por reservación (ADR)", 
+            value=f'{adr_actual:.2f} USD',
+            delta = f"{adr_actual - adr_anterior:.2f} USD respecto al mes anterior")
             
         los_actual, los_anterior = average_los(new_data, 'all')
         k1.metric(
