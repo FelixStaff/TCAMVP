@@ -1,0 +1,81 @@
+# Here you can define all your datasets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+
+# Add the datasets of your project here. {CD_GH_Revenue.csv} is an example of a dataset that we use
+
+revenue_dataset:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/CD_GH_Revenue.csv
+
+stay_dataset:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/CD_GH_Stay.csv
+
+merged_data:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/CD_GH_Revenue_Stay_Joined.csv
+
+# reduced_data:
+#   type: pandas.CSVDataset
+#   filepath: data/02_intermediate/CD_GH_Reduced_Data.csv
+
+filtered_data:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/CD_GH_Filtered_Data.csv
+
+clustered_data:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/CD_GH_Clustered_Data.csv
+
+final_data:
+  type: pandas.CSVDataset
+  filepath: data/03_primary/CD_GH_Final_Data.csv
+
+train_data:
+  type: pandas.CSVDataset
+  filepath: data/03_primary/CD_GH_Train_Data.csv
+
+test_data:
+  type: pandas.CSVDataset
+  filepath: data/03_primary/CD_GH_Test_Data.csv
+
+# # The plots of the project
+# revenue_plot:
+#   type: matplotlib.PlotDataset
+#   filepath: data/04_reports/CD_GH_Revenue_Plot.png
+
+# The Neural Network model of sklearn
+# model_net:
+#   type: sklearn.PickleModel
+#   filepath: data/06_models/CD_GH_Neural_Network.pkl
+
+roc_curve:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/CD_GH_ROC_Curve.png
+  versioned: false
+
+confusion_matrix:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/CD_GH_Confusion_Matrix.png
+  versioned: false
+
+trained_net:
+  type: pickle.PickleDataset
+  filepath: data/06_models/CD_GH_Trained_Neural_Network.pkl
+
+grafico_pie_beneficios:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/CD_GH_Pie_Beneficios.png
+  versioned: false
+
+grafico_pie_poblacion:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/CD_GH_Pie_Poblacion.png
+  versioned: false
+
+grafico_tabla_medias:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/CD_GH_Tabla_Medias.png
+  versioned: false

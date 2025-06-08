@@ -1,0 +1,13 @@
+# This is a boilerplate parameters config generated for pipeline 'metrics'
+# using Kedro 0.19.13.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.13/configuration/parameters.html
+
+
+metrics_values:
+  - Personas Individuales
+  - Parejas Sin Hijos
+  - Familias Nucleares
+  - miscelaneos
+  - familias extensas en pocos dias

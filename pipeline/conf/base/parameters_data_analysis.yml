@@ -1,0 +1,11 @@
+# This is a boilerplate parameters config generated for pipeline 'data_analysis'
+# using Kedro 0.19.13.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.13/configuration/parameters.html
+
+# The parameters for the data_analysis pipeline of the kmeans
+gmm_params:
+  # The parameters for the kmeans algorithm
+  n_clusters: 3
+  random_state: 42
