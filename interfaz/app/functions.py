@@ -70,6 +70,7 @@ def average_los(data, profile):
 def kpi_reservations(data, profile):
     '''
     Function to calculate the number of reservations per month for a given profile.
+    Returns the number of rows (reservations) for the most recent and previous months.
     '''
     if profile not in data['Profile'].unique():
         filtered_data = data
@@ -84,10 +85,12 @@ def kpi_reservations(data, profile):
     most_recent_month = most_recent_date.strftime('%Y-%m')
     previous_month = previous_month.strftime('%Y-%m')
 
-    # Group by month and count unique reservations
-    monthly_reservations = filtered_data.groupby('GraphDate')['RegId'].nunique().reset_index()
-    current_reservations = monthly_reservations[monthly_reservations['RegId'] == most_recent_month].shape[0]
-    previous_reservations = monthly_reservations[monthly_reservations['GraphDate'] == previous_month].shape[0]
+    # Filter data for the most recent and previous months
+    current_data = filtered_data[filtered_data['GraphDate'] == most_recent_month]
+    previous_data = filtered_data[filtered_data['GraphDate'] == previous_month]
+
+    current_reservations = len(current_data)
+    previous_reservations = len(previous_data)
     
     return current_reservations, previous_reservations
 
@@ -122,18 +125,18 @@ def plot_bar_chart(data, client, type):
     if type == 'clients':
         fig.add_trace(go.Scatter(x=monthly_label_data['GraphDate'], y=monthly_label_data['Number of Clients'], mode='lines+markers', name=f'Clients {client}'))
         fig.update_layout(
-            title='Monthly Number of Clients',
-            xaxis_title='Date',
-            yaxis_title='Number of Clients',
-            yaxis2=dict(title='Revenue', overlaying='y', side='right'),
+            title='Reservas mensuales',
+            xaxis_title='Fecha',
+            yaxis_title='Recuento de reservas',
+            yaxis2=dict(title='Clients', overlaying='y', side='right'),
             template='plotly_white')
         
     elif type == 'revenue':
         fig.add_trace(go.Scatter(x=monthly_label_data['GraphDate'], y=monthly_label_data['LocalCurrencyAmount'], mode='lines+markers', name=f'Revenue {client}', yaxis='y2'))
         fig.update_layout(
-            title='Monthly Revenue in USD',
-            xaxis_title='Date',
-            yaxis_title='Number of Clients',
+            title='Ingresos mensuales (en moneda local)',
+            xaxis_title='Fecha',
+            yaxis_title='Ingresos',
             yaxis2=dict(title='Revenue', overlaying='y', side='right'),
             template='plotly_white')
 
